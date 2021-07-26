@@ -10,4 +10,8 @@ class Food extends Model
     use HasFactory;
     protected $table = 'foods';
     protected $primaryKey = 'id';
+
+    function category() {
+        return $this->belongsTo(Category::class, 'category_id');
+    }
 }
