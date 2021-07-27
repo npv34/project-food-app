@@ -15,18 +15,31 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::prefix('admin')->group(function () {
-    Route::prefix('foods')->group(function () {
-        Route::get('/', [\App\Http\Controllers\FoodController::class, 'index'])->name('foods.index');
-        Route::get('/create', [\App\Http\Controllers\FoodController::class, 'create'])->name('foods.create');
+
+    Route::get('login', [\App\Http\Controllers\LoginController::class, 'showFormLogin'])->name('admin.showFormLogin');
+    Route::post('login', [\App\Http\Controllers\LoginController::class, 'login'])->name('admin.login');
+
+    Route::middleware('checkLogin')->group(function () {
+        Route::prefix('foods')->group(function () {
+            Route::get('/', [\App\Http\Controllers\FoodController::class, 'index'])->name('foods.index');
+            Route::get('/create', [\App\Http\Controllers\FoodController::class, 'create'])->name('foods.create');
+        });
+
+        Route::prefix('users')->group(function () {
+            Route::get('/', [UserController::class, 'index'])->name('users.index');
+            Route::get('create', [UserController::class, 'create'])->name('users.create');
+            Route::post('create', [UserController::class, 'store'])->name('users.store');
+        });
+
+        Route::get('logout',[\App\Http\Controllers\LoginController::class,'logout'])->name('admin.logout');
+
+        Route::get('/', function () {
+            return view('admin.dashboard');
+        });
+
+
     });
 
-    Route::prefix('users')->group(function () {
-        Route::get('/', [UserController::class, 'index'])->name('users.index');
-        Route::get('create', [UserController::class, 'create'])->name('users.create');
-        Route::post('create', [UserController::class, 'store'])->name('users.store');
-    });
 });
 
-Route::get('/', function () {
-    return view('admin.dashboard');
-});
+

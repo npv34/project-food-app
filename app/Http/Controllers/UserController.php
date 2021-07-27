@@ -25,7 +25,7 @@ class UserController extends Controller
 
         //them role user
         $user->roles()->sync($request->roles);
-
+        session()->flash('add_success', 'Add new user successfully!');
         return redirect()->route('users.index');
 
     }

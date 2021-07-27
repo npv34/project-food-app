@@ -13,6 +13,9 @@
                 </h6>
             </div>
             <div class="card-body">
+                @if(session()->has('add_success'))
+                        {{ session()->get('add_success') }}
+                @endif
                 <div class="table-responsive">
                     <div class="col-12 m-2">
                         {{ $users->links() }}
