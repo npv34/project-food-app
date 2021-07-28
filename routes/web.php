@@ -37,6 +37,8 @@ Route::prefix('admin')->group(function () {
             return view('admin.dashboard');
         });
 
+        Route::get('current-weather', [\App\Http\Controllers\WeatherController::class, 'showCurrentWeather'])->name('weather.showCurrentWeather');
+
 
     });
 
