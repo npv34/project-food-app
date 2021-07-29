@@ -28,12 +28,12 @@
                     <div class="form-group">
                         <label for="exampleInputPassword1">Password</label>
                         <div class="input-group mb-2">
-                            <div class="input-group-prepend">
+                            <div class="input-group-prepend" id="icon-eye-password">
                                 <div class="input-group-text">
-                                    <i class="fas fa-eye-slash"></i>
+                                    <i class="fas fa-eye-slash" id="icon-eye"></i>
                                 </div>
                             </div>
-                            <input type="password" name="password" class="form-control" id="exampleInputPassword1"
+                            <input type="password" name="password" class="form-control" id="inputPassword"
                             >
                         </div>
                     </div>
@@ -42,7 +42,7 @@
                         <div class="input-group mb-2">
                             <div class="input-group-prepend">
                                 <div class="input-group-text">
-                                    <i class="fas fa-eye-slash"></i>
+                                    <i class="fas fa-eye-slash" ></i>
                                 </div>
                             </div>
                             <input type="password" name="password_confirmed" class="form-control"

@@ -39,7 +39,7 @@
                         </tfoot>
                         <tbody>
                         @forelse($users as $user)
-                            <tr>
+                            <tr class="user-item" id="user-{{$user->id}}">
                                 <td>{{ $user->name }}</td>
                                 <td>{{ $user->email }}</td>
                                 <td>
@@ -50,7 +50,7 @@
                                     @endforelse
                                 </td>
                                 <td>
-                                    <a href="" class="btn btn-danger">Delete</a>
+                                    <button type="button" data-id="{{ $user->id }}" class="btn btn-danger delete-user">Delete</button>
                                 </td>
                             </tr>
                         @empty

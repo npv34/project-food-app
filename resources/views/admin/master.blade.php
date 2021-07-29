@@ -411,7 +411,9 @@
 </div>
 
 <!-- Bootstrap core JavaScript-->
-<script src="{{ asset('js/jquery.min.js') }}"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+{{--<script src="{{ asset('js/jquery.min.js') }}"></script>--}}
 <script src="{{ asset('js/bootstrap.bundle.min.js') }}"></script>
 
 <!-- Core plugin JavaScript-->
@@ -419,6 +421,7 @@
 
 <!-- Custom scripts for all pages-->
 <script src="{{ asset('css/sb-admin-2.min.css') }}"></script>
+<script src="{{ asset('js/my.js') }}"></script>
 
 
 </body>

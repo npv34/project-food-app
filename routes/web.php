@@ -29,6 +29,7 @@ Route::prefix('admin')->group(function () {
             Route::get('/', [UserController::class, 'index'])->name('users.index');
             Route::get('create', [UserController::class, 'create'])->name('users.create');
             Route::post('create', [UserController::class, 'store'])->name('users.store');
+            Route::get('{id}/delete', [UserController::class, 'delete'])->name('users.delete');
         });
 
         Route::get('logout',[\App\Http\Controllers\LoginController::class,'logout'])->name('admin.logout');

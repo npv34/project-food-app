@@ -42,4 +42,12 @@ class UserController extends Controller
         $user->roles()->sync($request->roles);
         return redirect()->route('users.index');
     }
+
+    function delete($id){
+        $user = User::findOrFail($id);
+        $user->roles()->detach();
+        $user->delete();
+
+        return response()->json(['message' => 'delete successfully!']);
+    }
 }
