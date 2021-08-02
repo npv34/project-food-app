@@ -39,6 +39,8 @@ $(document).ready(function () {
                 success: function (res) {
                     //xu ly du lieu ajax tra ve
                     $('#user-' + idUser).remove();
+                    $('.message-succsess').addClass('alert alert-success')
+                    $('.message-succsess').html(res.message);
                 },
                 //xu ly ajax that bai
                 error: function (error) {

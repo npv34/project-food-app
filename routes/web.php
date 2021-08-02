@@ -16,10 +16,10 @@ use Illuminate\Support\Facades\Route;
 
 Route::prefix('admin')->group(function () {
 
-    Route::get('login', [\App\Http\Controllers\LoginController::class, 'showFormLogin'])->name('admin.showFormLogin');
+    Route::get('login', [\App\Http\Controllers\LoginController::class, 'showFormLogin'])->name('login');
     Route::post('login', [\App\Http\Controllers\LoginController::class, 'login'])->name('admin.login');
 
-    Route::middleware('checkLogin')->group(function () {
+    Route::middleware(['auth','setLocal'])->group(function () {
         Route::prefix('foods')->group(function () {
             Route::get('/', [\App\Http\Controllers\FoodController::class, 'index'])->name('foods.index');
             Route::get('/create', [\App\Http\Controllers\FoodController::class, 'create'])->name('foods.create');
@@ -40,7 +40,7 @@ Route::prefix('admin')->group(function () {
 
         Route::get('current-weather', [\App\Http\Controllers\WeatherController::class, 'showCurrentWeather'])->name('weather.showCurrentWeather');
 
-
+        Route::post('change-language', [\App\Http\Controllers\LangController::class,'changeLanguage'])->name('admin.changeLanguage');
     });
 
 });

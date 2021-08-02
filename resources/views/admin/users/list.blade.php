@@ -4,18 +4,23 @@
     <div class="container-fluid">
 
         <!-- Page Heading -->
-        <h1 class="h3 mb-2 text-gray-800">User list</h1>
+        <h1 class="h3 mb-2 text-gray-800">@lang('message.user_list')</h1>
         <!-- DataTales Example -->
         <div class="card shadow mb-4">
-            <div class="card-header py-3">
-                <h6 class="m-0 font-weight-bold text-primary">
-                    <a class="btn btn-success" href="{{ route('users.create') }}">Add new</a>
-                </h6>
-            </div>
+            @can('crud-user')
+                <div class="card-header py-3">
+                    <h6 class="m-0 font-weight-bold text-primary">
+                        <a class="btn btn-success" href="{{ route('users.create') }}">@lang('message.add_new')</a>
+                    </h6>
+                </div>
+            @endcan
+            @if(session()->has('add_success'))
+                {{ session()->get('add_success') }}
+            @endif
+
+            <div class="message-succsess"></div>
             <div class="card-body">
-                @if(session()->has('add_success'))
-                        {{ session()->get('add_success') }}
-                @endif
+
                 <div class="table-responsive">
                     <div class="col-12 m-2">
                         {{ $users->links() }}
@@ -26,7 +31,9 @@
                             <th>Name</th>
                             <th>Email</th>
                             <th>Role</th>
-                            <th></th>
+                            @can('crud-user')
+                                <th></th>
+                            @endcan
                         </tr>
                         </thead>
                         <tfoot>
@@ -34,7 +41,9 @@
                             <th>Name</th>
                             <th>Email</th>
                             <th>Role</th>
-                            <th></th>
+                            @can('crud-user')
+                                <th></th>
+                            @endcan
                         </tr>
                         </tfoot>
                         <tbody>
@@ -49,9 +58,16 @@
                                         Chua phan quyen
                                     @endforelse
                                 </td>
-                                <td>
-                                    <button type="button" data-id="{{ $user->id }}" class="btn btn-danger delete-user">Delete</button>
-                                </td>
+                                @can('crud-user')
+                                    <td>
+
+                                        <button type="button" data-id="{{ $user->id }}"
+                                                class="btn btn-danger delete-user">
+                                            @lang('message.delete_button')
+                                        </button>
+
+                                    </td>
+                                @endcan
                             </tr>
                         @empty
                             <tr>
