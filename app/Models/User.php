@@ -44,4 +44,14 @@ class User extends Authenticatable
     function roles() {
         return $this->belongsToMany(Role::class,'role_user', 'user_id','role_id');
     }
+
+    function isAdmin(): bool
+    {
+        foreach ($this->roles as $role) {
+            if ($role->name == 'Admin') {
+                return true;
+            }
+        }
+        return false;
+    }
 }

@@ -38,6 +38,11 @@ class AuthServiceProvider extends ServiceProvider
         });
 
 
+        Gate::define('crud-post', function () {
+            $userLogin = Auth::user();
+            return $userLogin->isAdmin();
+        });
+
 
         //
     }
