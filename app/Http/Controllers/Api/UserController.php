@@ -11,7 +11,7 @@ use Illuminate\Support\Facades\Hash;
 class UserController extends Controller
 {
     function getAll() {
-        $users = User::all();
+        $users = User::with('roles')->get();
         $data = [
             "status" => "success",
             "users" => $users
