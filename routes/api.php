@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Api\RoleController;
 use App\Http\Controllers\Api\UserController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -17,3 +18,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('users', [UserController::class,'getAll']);
 Route::post('users', [UserController::class,'store']);
+
+Route::prefix('roles')->group(function (){
+    Route::get('', [RoleController::class, 'index'])
+});
