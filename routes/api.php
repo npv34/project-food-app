@@ -20,5 +20,5 @@ Route::get('users', [UserController::class,'getAll']);
 Route::post('users', [UserController::class,'store']);
 
 Route::prefix('roles')->group(function (){
-    Route::get('', [RoleController::class, 'index'])
+    Route::get('', [RoleController::class, 'index']);
 });
