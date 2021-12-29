@@ -54,9 +54,9 @@ class UserController extends Controller
     }
 
     function delete($id){
-        if (!Gate::allows('crud-user')) {
-            abort(403);
-        }
+//        if (!Gate::allows('crud-user')) {
+//            abort(403);
+//        }
         $user = User::findOrFail($id);
         $user->roles()->detach();
         $user->delete();

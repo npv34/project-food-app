@@ -18,37 +18,20 @@ $(document).ready(function () {
     // })
 
     $('.delete-user').click(function (){
-        if (confirm('Are you sure?')) {
-            let idUser = $(this).attr('data-id');
-            let origin = window.location.origin // http://localhost:8000
-            // goi jquery ajax
+        if (confirm("Are you sure?")) {
+            let idUser = $('.delete-user').attr('data-id');
             $.ajax({
-                // url request duoc gui den
-                url: origin + '/admin/users/' + idUser + '/delete',
-                // method request
-                method: 'GET',
-                //kieu du lieu tra ve
+                url: 'http://127.0.0.1:8000/admin/users/' + idUser + '/delete',
+                method: "GET",
                 type: 'json',
-                // neu co du lieu gui kem - form
-                /*
-                data: {
-                   key: value
-                }
-                 */
-                //xu ly ajax goi thanh cong
                 success: function (res) {
-                    //xu ly du lieu ajax tra ve
                     $('#user-' + idUser).remove();
-                    $('.message-succsess').addClass('alert alert-success')
-                    $('.message-succsess').html(res.message);
-                },
-                //xu ly ajax that bai
-                error: function (error) {
-                    alert('error')
                 }
             })
         }
-
-
     })
+
+    $('#show-name').change(function (){
+        $('.name-user').toggle();
+    });
 })

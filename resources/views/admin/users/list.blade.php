@@ -19,37 +19,39 @@
             @endif
 
             <div class="message-succsess"></div>
+
             <div class="card-body">
 
                 <div class="table-responsive">
+                    <input type="checkbox" id="show-name">Name
                     <div class="col-12 m-2">
                         {{ $users->links() }}
                     </div>
                     <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                         <thead>
                         <tr>
-                            <th>Name</th>
+                            <th class="name-user">Name</th>
                             <th>Email</th>
                             <th>Role</th>
-                            @can('crud-user')
+{{--                            @can('crud-user')--}}
                                 <th></th>
-                            @endcan
+{{--                            @endcan--}}
                         </tr>
                         </thead>
                         <tfoot>
                         <tr>
-                            <th>Name</th>
+                            <th class="name-user">Name</th>
                             <th>Email</th>
                             <th>Role</th>
-                            @can('crud-user')
+{{--                            @can('crud-user')--}}
                                 <th></th>
-                            @endcan
+{{--                            @endcan--}}
                         </tr>
                         </tfoot>
                         <tbody>
                         @forelse($users as $user)
                             <tr class="user-item" id="user-{{$user->id}}">
-                                <td>{{ $user->name }}</td>
+                                <td class="name-user">{{ $user->name }}</td>
                                 <td>{{ $user->email }}</td>
                                 <td>
                                     @forelse($user->roles as $role)
@@ -58,7 +60,7 @@
                                         Chua phan quyen
                                     @endforelse
                                 </td>
-                                @can('crud-user')
+{{--                                @can('crud-user')--}}
                                     <td>
 
                                         <button type="button" data-id="{{ $user->id }}"
@@ -67,7 +69,7 @@
                                         </button>
 
                                     </td>
-                                @endcan
+{{--                                @endcan--}}
                             </tr>
                         @empty
                             <tr>
