@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\PostController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
@@ -40,6 +41,12 @@ Route::prefix('admin')->group(function () {
 
         Route::get('/', function () {
             return view('admin.dashboard');
+        });
+
+        Route::prefix('posts')->group(function () {
+            Route::get('/create', [PostController::class,'create'])->name('posts.create');
+            Route::post('/create', [PostController::class,'store'])->name('posts.store');
+            Route::get('/', [PostController::class,'index'])->name('posts.index');
         });
 
         Route::get('current-weather', [\App\Http\Controllers\WeatherController::class, 'showCurrentWeather'])->name('weather.showCurrentWeather');

@@ -12,17 +12,17 @@ use Illuminate\Support\Facades\Hash;
 class UserController extends Controller
 {
     function create() {
-        if (!$this->userCan('crud-user')) {
-            abort(403);
-        }
+//        if (!$this->userCan('crud-user')) {
+//            abort(403);
+//        }
         $roles = Role::all();
         return view('admin.users.create', compact('roles'));
     }
 
     function store(StoreUserRequest $request) {
-        if (!$this->userCan('crud-user')) {
-            abort(403);
-        }
+//        if (!$this->userCan('crud-user')) {
+//            abort(403);
+//        }
         // tao user
         $user = new User();
         $user->name = $request->name;
