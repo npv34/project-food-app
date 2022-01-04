@@ -12,4 +12,8 @@ class Post extends Model
     function user() {
         return $this->belongsTo(User::class);
     }
+
+    function types() {
+        return $this->belongsToMany(Type::class, 'type_post');
+    }
 }
