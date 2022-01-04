@@ -33,9 +33,9 @@
                             <th class="name-user">Name</th>
                             <th>Email</th>
                             <th>Role</th>
-{{--                            @can('crud-user')--}}
+                            @can('delete-user')
                                 <th></th>
-{{--                            @endcan--}}
+                            @endcan
                         </tr>
                         </thead>
                         <tfoot>
@@ -43,9 +43,9 @@
                             <th class="name-user">Name</th>
                             <th>Email</th>
                             <th>Role</th>
-{{--                            @can('crud-user')--}}
+                            @can('delete-user')
                                 <th></th>
-{{--                            @endcan--}}
+                            @endcan
                         </tr>
                         </tfoot>
                         <tbody>
@@ -60,16 +60,15 @@
                                         Chua phan quyen
                                     @endforelse
                                 </td>
-{{--                                @can('crud-user')--}}
+                                @can('delete-user')
                                     <td>
-
                                         <button type="button" data-id="{{ $user->id }}"
                                                 class="btn btn-danger delete-user">
                                             @lang('message.delete_button')
                                         </button>
 
                                     </td>
-{{--                                @endcan--}}
+                                @endcan
                             </tr>
                         @empty
                             <tr>

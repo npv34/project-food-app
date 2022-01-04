@@ -5,15 +5,17 @@
 
         <!-- Page Heading -->
         <h1 class="h3 mb-2 text-gray-800">
-            Danh sach bai viet
+            Posts
         </h1>
         <!-- DataTales Example -->
         <div class="card shadow mb-4">
+            @can('add-new-post')
             <div class="card-header py-3">
                 <h6 class="m-0 font-weight-bold text-primary">
-                    <a class="btn btn-success" href="{{ route('posts.create') }}">Them moi</a>
+                    <a class="btn btn-success" href="{{ route('posts.create') }}">Add new</a>
                 </h6>
             </div>
+            @endcan
             <div class="card-body">
                 <div class="table-responsive">
                     <div class="form-group">
@@ -32,7 +34,6 @@
                         <thead>
                         <tr>
                             <th><input type="checkbox" id="check-all-post"></th>
-                            <th class="">STT</th>
                             <th>Title</th>
                             <th>Categories</th>
                             <th>Image</th>
@@ -44,7 +45,6 @@
                         <tfoot>
                         <tr>
                             <th><input type="checkbox" id="check-all-post"></th>
-                            <th class="">STT</th>
                             <th>Title</th>
                             <th>Categories</th>
                             <th>Image</th>
@@ -57,7 +57,6 @@
                         @forelse($posts as $key => $post)
                             <tr>
                                 <td><input type="checkbox"></td>
-                                <td>{{ $key + 1 }}</td>
                                 <td>{{ $post->title }}</td>
                                 <td>
                                     @if($post->types->count() > 0)

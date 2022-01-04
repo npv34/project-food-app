@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use App\Models\User;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Gate;
@@ -38,12 +39,23 @@ class AuthServiceProvider extends ServiceProvider
         });
 
 
-        Gate::define('crud-post', function () {
-            $userLogin = Auth::user();
-            return $userLogin->isAdmin();
+        Gate::define('add-new-post', function ($user) {
+            // code logic theo role user
+            foreach ($user->roles as $role) {
+                if ($role->name == "Admin") {
+                    return true;
+                }
+            }
+            return false;
         });
 
-
-        //
+        Gate::define('delete-user', function ($user) {
+            foreach ($user->roles as $role) {
+                if ($role->name == "Admin") {
+                    return true;
+                }
+            }
+            return false;
+        });
     }
 }

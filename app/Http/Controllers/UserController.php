@@ -54,11 +54,12 @@ class UserController extends Controller
     }
 
     function delete($id){
-//        if (!Gate::allows('crud-user')) {
-//            abort(403);
-//        }
         $user = User::findOrFail($id);
+        if (!Gate::allows('delete-user')) {
+            return response()->json(['message' => 'Khong xoa duoc']);
+        }
         $user->roles()->detach();
+        $user->posts()->delete();
         $user->delete();
         return response()->json(['message' => __('message.delete_success')]);
     }
